@@ -63,3 +63,16 @@ body {
     margin-top: 1rem;
     font-size: 1.2rem;
 }
+
+.reviews {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    margin: 0 2rem 2rem 2rem;
+}
+.review{
+    position: relative;
+    background-color: #151f30;
+    padding: 1rem;
+    border-radius: 25px;
+}

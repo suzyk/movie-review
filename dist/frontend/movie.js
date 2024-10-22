@@ -87,7 +87,7 @@ function saveReview(reviewInputId, userInputId, reviewId=""){
             })
             .then(response => response.json()) //after we get the data
             .then(response => {
-                console.log(response)
+                //console.log(response)
                 location.reload();  //reload the url
             })
             .catch(err => console.error(err));
@@ -102,7 +102,7 @@ function saveReview(reviewInputId, userInputId, reviewId=""){
         })
         .then(response => response.json()) //after we get the data
         .then(response => {
-            console.log(response)
+            //console.log(response)
             location.reload();  //reload the url
         })
         .catch(err => console.error(err));
@@ -116,7 +116,7 @@ function deleteReview(reviewId) {
     })
     .then(response => response.json()) //after we get the data
     .then(response => {
-        console.log(response)
+        //console.log(response)
         location.reload();  //reload the url
     })
     .catch(err => console.error(err));

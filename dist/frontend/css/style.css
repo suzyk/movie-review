@@ -42,7 +42,7 @@ body {
 
 .movies {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 2rem;
     margin: 0 2rem 2rem 2rem;
 }
@@ -50,13 +50,50 @@ body {
 .movie {
     position: relative;
     background-color: #151f30;
-    padding: 1rem;
-    border-radius: 25px;
+    border-radius: 15px;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.movie:hover img{
+    -moz-transform: scale(1.06);
+    -webkit-transform: scale(1.06);
+    -o-transform: scale(1.06);
+    -ms-transform: scale(1.06);
+    transform: scale(1.06);
+}
+
+.movie::after { /* overlay*/
+    content:'';
+    position: absolute;
+    top: 0; 
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: black;
+    border-radius: 15px;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+.movie:hover::after { /* target this pseudo-element */
+    opacity: 0.8;
 }
 
 .movie img {
     width: 100%;
-    border-radius: 25px;
+    border-radius: 15px 15px 0 0;
+    -webkit-transition: transform 0.5s ease-in-out;
+    -moz-transition: transform 0.5s ease-in-out;
+    -ms-transition: transform 0.5s ease-in-out;
+    -o-transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 }
 .movie h2 {
     text-align: center;
@@ -74,5 +111,13 @@ body {
     position: relative;
     background-color: #151f30;
     padding: 1rem;
-    border-radius: 25px;
+    border-radius: 15px;
+}
+
+#search_keyword {
+    font-size: 2.5rem;
+}
+
+.soft_color{
+    color: #d9dfecec;
 }

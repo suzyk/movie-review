@@ -9,15 +9,19 @@
 <body>
     <div class="topnav">
         <a href="index.html" class="active">Movie Site</a>
+        <div class="search-container">
+            <form role="search" id="form">
+            <input type="search" id="query" name="q" placeholder="Search...">
+            </form>
+        </div>
     </div>
 
-    <h1>Reviews for:</h1>
-    <h3 id="title">Movie Title</h3>
     <section>
-        <div class="reviews">
-
+        <h2 class="soft_color">Search result for </h2><h1 id="search_keyword"></h1>
+        <div class="movies">
+        
         </div>
     </section>
 </body>
-<script src="movie.js"></script>
+<script src="search-result.js"></script>
 </html>

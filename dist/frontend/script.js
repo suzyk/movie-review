@@ -8,15 +8,14 @@ fetchMovies('http://localhost:8000/api/movies');
 
 searchForm.addEventListener('submit', (e) =>{
     e.preventDefault();
-    movieContainer.innerHTML = "";
-    if (searchInput.value) {
-      fetchMovies(`http://localhost:8000/api/search?term=${searchInput.value}`);
-      searchInput.value = ""
+    
+    const searchTerm = searchInput.value.trim();
+    if (searchTerm) {
+      window.location.href = `search-result.html?q=${encodeURIComponent(searchTerm)}`;
     }
 });
 
 function fetchMovies(url) {
-  console.log(url);
   fetch(url)
     .then(response => response.json())
     .then(response => renderMovies(response.results))

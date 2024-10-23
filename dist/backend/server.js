@@ -45,7 +45,6 @@ app.get('/api/movies', async (req, res) => {
   }
 });
 app.get('/api/search', async (req, res) => {
-  console.log("inside search query: " + req.query.term);
   try {
     const response = await axios.get('https://api.themoviedb.org/3/search/movie', {
       params: {

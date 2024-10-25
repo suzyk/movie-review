@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    text-decoration: none;
 }
 body {
     background-color: #131720;
@@ -49,6 +50,7 @@ body {
 
 .movie {
     position: relative;
+    cursor: pointer;
     background-color: #151f30;
     border-radius: 15px;
     overflow: hidden;
@@ -64,6 +66,10 @@ body {
     -o-transform: scale(1.06);
     -ms-transform: scale(1.06);
     transform: scale(1.06);
+}
+
+.movie:hover .genre_tag{
+    opacity: 1;
 }
 
 .movie::after { /* overlay*/
@@ -85,6 +91,9 @@ body {
 .movie:hover::after { /* target this pseudo-element */
     opacity: 0.8;
 }
+.movie:hover .title_review{
+    top: 80%;
+}
 
 .movie img {
     width: 100%;
@@ -95,10 +104,58 @@ body {
     -o-transition: transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out;
 }
-.movie h2 {
+.title { 
     text-align: center;
-    margin-top: 1rem;
     font-size: 1.2rem;
+}
+.reviewBtn {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+.reviewBtn a{
+    color: rgb(1, 184, 184);
+}
+.reviewBtn a:hover {
+    color: yellow;
+}
+
+.title_review{
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    background-color: transparent;
+    -webkit-transition: top 0.5s ease-in-out;
+    -moz-transition: top 0.5s ease-in-out;
+    -ms-transition: top 0.5s ease-in-out;
+    -o-transition: top 0.5s ease-in-out;
+    transition: top 0.5s ease-in-out;
+}
+
+.tags {
+    position: absolute;
+    top: 20%;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* horizontal */
+    gap: 8px;
+    padding: 20px;
+    max-width: 100%; /* Ensure the container doesn’t overflow */
+    box-sizing: border-box; /* Includes padding in the container’s width */
+}
+.genre_tag {
+    width: fit-content;
+    border-radius: 4px;
+    white-space: nowrap; /* Prevent tags from breaking internally */
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 3px;
+    background: teal;
+    opacity: 0;
+    transition:all .5s ease-in-out
 }
 
 .reviews {

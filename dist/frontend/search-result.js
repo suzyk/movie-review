@@ -24,7 +24,7 @@ function renderMovies(movies){
         const poster = document.createElement('img');
         poster.src = IMG_PATH + movie.poster_path;
         const title = document.createElement('h2');
-        title.innerHTML = `${movie.title}<br><a href="movie.html?id=${movie.id}&title=${movie.title}">reviews</a>`; // query parameters
+        title.innerHTML = `${movie.title}<br><a href="movie.html?id=${movie.id}&title=${movie.title}">reviews</a><span class="genre_tag">action</span>`; // query parameters
         movieCard.appendChild(poster);
         movieCard.appendChild(title);
         movieContainer.appendChild(movieCard);

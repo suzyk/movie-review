@@ -41,7 +41,10 @@ function renderMovies(movies){
     titleReview.appendChild(review);
     const tags = document.createElement('div');
     tags.setAttribute('class', 'tags');
-    tags.innerHTML = `<span class="genre_tag">action</span><span class="genre_tag">SF</span><span class="genre_tag">romance</span><span class="genre_tag">Horror</span><span class="genre_tag">thriller</span>`;
+    for (const i in movie.genre_ids){
+      tags.innerHTML += `<span class="genre_tag">${movie.genre_ids[i]}</span>`;
+      // request genre from api : https://api.themoviedb.org/3/genre/movie/list?language=en
+    }
     movieCard.appendChild(poster);
     movieCard.appendChild(titleReview);
     movieCard.appendChild(tags);

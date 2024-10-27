@@ -2,13 +2,35 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
+    border-width: 0;
+    box-sizing: border-box;
 }
 body {
     background-color: #131720;
     font-family: sans-serif;
     color : white;
 }
-
+a{
+    text-decoration: none;
+}
+footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    padding: 2rem;
+    width: 100%;
+    color: rgb(202, 202, 202);
+    background-color: #151f30;
+}
+footer a {
+    color: rgb(202, 202, 202);
+}
+footer small {
+    margin-top: 10px;
+}
+footer a:hover{
+    color: white;
+}
 .topnav {
     background-color: #131720;
     padding: 10px;
@@ -17,7 +39,6 @@ body {
 
 .topnav a {
     float: left;
-    text-decoration: none;
     color: white;
     padding: 1rem;
     font-size: 1.2rem;
@@ -50,8 +71,9 @@ body {
 
 .movie {
     position: relative;
+    box-sizing: border-box;
     cursor: pointer;
-    background-color: #151f30;
+    /*background-color: #151f30;*/
     border-radius: 15px;
     overflow: hidden;
     -webkit-transition: all 0.5s ease-in-out;
@@ -75,10 +97,11 @@ body {
 .movie::after { /* overlay*/
     content:'';
     position: absolute;
-    top: 0; 
-    left: 0;
-    height: 100%;
-    width: 100%;
+    box-sizing: border-box;
+    top: -1px; /* Adjusting the position slightly */
+    left: -1px;
+    width: calc(100% + 2px); /* Slight overflow to cover edges */
+    height: calc(100% + 2px);
     background: black;
     border-radius: 15px;
     opacity: 0;
@@ -97,7 +120,7 @@ body {
 
 .movie img {
     width: 100%;
-    border-radius: 15px 15px 0 0;
+    border-radius: 15px;
     -webkit-transition: transform 0.5s ease-in-out;
     -moz-transition: transform 0.5s ease-in-out;
     -ms-transition: transform 0.5s ease-in-out;
@@ -178,3 +201,4 @@ body {
 .soft_color{
     color: #d9dfecec;
 }
+

@@ -25,6 +25,19 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.get('/api/genres', async (req, res) => {
+  try {
+    const response = await axios.get('https://api.themoviedb.org/3/genre/movie/list?language=en', {
+        params: {
+          api_key: movie_api_key
+        }
+    });
+    res.json(response.data);
+  }catch (error){
+    console.error(error);
+    res.status(500).send('Error fetching genres');
+  }
+});
 // Endpoint to fetch movie data
 app.get('/api/movies', async (req, res) => {
   try {

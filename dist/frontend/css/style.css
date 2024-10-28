@@ -166,6 +166,7 @@ footer a:hover{
     justify-content: center; /* horizontal */
     gap: 8px;
     padding: 20px;
+    width: 100%;
     max-width: 100%; /* Ensure the container doesn’t overflow */
     box-sizing: border-box; /* Includes padding in the container’s width */
 }

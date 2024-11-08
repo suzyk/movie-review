@@ -91,7 +91,7 @@ function renderMovies(movies){
 
     movieCard.addEventListener('click', (e) =>{
       //e.preventDefault();
-      window.location.href = `movie-detail.html?${movie.id}`;
+      window.location.href = `movie-detail.html?q=${movie.id}`;
     });
   });
 }

@@ -1,3 +1,10 @@
+@import url(movie_detail.css);
+:root {
+    --tag-color: rgb(225, 177, 0);
+    --dark-text-color: rgb(51, 51, 51);
+    --light-grey-color: rgb(189, 189, 189);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -195,10 +202,19 @@ footer a:hover{
     border-radius: 15px;
 }
 
+
+.search_header {
+    display: inline-flex;
+    height: 3rem;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    width: 100%;
+    align-items: center;
+}
 #search_keyword {
+    margin-left: 1rem;
     font-size: 2.5rem;
 }
-
 .soft_color{
     color: #d9dfecec;
 }

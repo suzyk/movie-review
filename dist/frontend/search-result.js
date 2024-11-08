@@ -1,5 +1,11 @@
 const url = new URL(location.href);
 const searchKeyword = url.searchParams.get("q");
+// Get the path after "search-result/"
+//const path = window.location.pathname;
+//const segments = path.split('/');
+// The search term should be the last segment
+//const searchTerm = decodeURIComponent(segments[segments.length - 1]);
+
 const keyword_header = document.querySelector('#search_keyword');
 const IMG_PATH = "https://image.tmdb.org/t/p/w500"; //1280 
 const movieContainer = document.querySelector('.movies');

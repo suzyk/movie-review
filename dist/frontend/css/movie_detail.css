@@ -1,0 +1,116 @@
+.movie_detail_main {
+    /*display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: yellow;
+}
+
+#logoImage {
+    position: fixed;
+    top: 120px; /* Position 10px below top of movie_detail_main */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    /*align-self: center;*/
+}
+
+.movie_detail_container {
+    /*position: absolute;
+    top: 100px;*/
+    width: 95%;
+    margin: 20px auto 20px auto; 
+    background-color: green;
+    border-radius: 10px;
+    box-shadow:  0 0 30px black;
+    z-index: 100;
+}
+
+.main_detail {
+    /*set image as background with paddings*/
+    display: flex;
+    position: relative;
+    padding: 40px;
+    border-radius: 10px 10px 0 0; 
+}
+.main_detail::before {
+    content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+    background-color: black;
+    border-radius: 10px 10px 0 0; 
+    opacity: .6; 
+}
+
+#detail_poster {
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.detail_info {
+    flex: 1;
+    margin: 0 40px 40px 40px;
+    text-align: left;
+    z-index: 1;
+}
+
+.detail_title {
+    font-size: 2.1rem;
+}
+.detail_releaseDate {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--light-grey-color);
+}
+
+.detail_genre_runTime{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 0 10px 0;
+}
+.detail_genre_tag {
+    width: fit-content;
+    border-radius: 4px;
+    white-space: nowrap; /* Prevent tags from breaking internally */
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--dark-text-color);
+    padding: 4px;
+    background: var(--tag-color);
+    transition:all .5s ease-in-out
+}
+.detail_runtime {
+    margin-top: 4px;
+}
+.detail_rating{
+    color: var(--tag-color);
+    font-size: 2.1rem;
+    margin-top: 1rem;
+}
+
+.detail_tagline{
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color : var(--light-grey-color);
+}
+
+.trailers {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    background-color: blue;
+}
+
+.similar_movies{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    background-color: purple;
+}

@@ -17,11 +17,13 @@ const genre_runTime = document.querySelector('.detail_genre_runTime');
 const rating = document.querySelector('.detail_rating');
 const tagline = document.querySelector('.detail_tagline');
 const overview = document.querySelector('.detail_overview');
+const trailers = document.getElementById('trailers');
 
 //const APILINK = 'http://localhost:8000/api/images';
 const IMG_PATH = "https://image.tmdb.org/t/p/w300";
 const LOGO_LINK = "https://image.tmdb.org/t/p/w300";
 const BACKDROP_LINK = "https://image.tmdb.org/t/p/w1280";
+const YOUTUBE_URL = "https://www.youtube.com/embed/";
 
 
 async function init() {
@@ -57,7 +59,20 @@ function getDetail(url){
 function getTrailers(url){
     fetch(`${url}/${movieID}`)
       .then(response => response.json())
-      .then(response => console.log(response.results))
+      .then(response => {
+        //console.log(response.results)
+        const videos = response.results;
+        videos.forEach(video => {
+          if (video.type == "Trailer"){
+            //console.log(`${YOUTUBE_URL}${video.key}`);
+            /*var obj = {"video": {
+              "value": "<iframe title='YouTube video player' type=\"text/html\" width='640' height='390' src='http://www.youtube.com/embed/W-Q7RMpINVo' frameborder='0' allowFullScreen></iframe>"
+            }}
+            document.write(obj.video.value);*/
+            trailers.innerHTML += `<iframe title='YouTube video player'   type=\'text/html\' width='400' height='225' src='${YOUTUBE_URL}${video.key}' frameborder='0' allowFullScreen></iframe>`;
+          }
+        });
+      })
       .catch(err => console.error(`error: ${err}`));
 }
 

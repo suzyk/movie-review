@@ -3,11 +3,15 @@ const IMG_PATH = "https://image.tmdb.org/t/p/w500"; //1280
 const movieContainer = document.querySelector('.movies');
 const searchForm = document.querySelector('#form');
 const searchInput = document.querySelector('#query');
+const brandLogoImage = document.querySelector('#brand_logo_img');
 
 let genres = {};
 
 // Ensure genres are fetched and cached before movies are fetched
 async function init() {
+  brandLogoImage.addEventListener('click', (e) => {
+    location.reload();
+  });
   await fetchGenres('http://localhost:8000/api/genres');
   await fetchMovies('http://localhost:8000/api/movies');
 }

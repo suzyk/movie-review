@@ -1,13 +1,17 @@
 const url = new URL(location.href);
 const movieId = url.searchParams.get("id");
 const movieTitle = url.searchParams.get("title");
-
 const APILINK = 'http://localhost:8000/api/v1/reviews';
 
 const reviewContainer = document.querySelector('.reviews');
 const title = document.querySelector('#title');
+const brandLogoImage = document.querySelector('#brand_logo_img');
 
 title.innerText = movieTitle;
+brandLogoImage.addEventListener('click', (e) => {
+    location.href = 'index.html';
+});
+
 
 const reviewCard = document.createElement('div');
 

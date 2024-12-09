@@ -17,6 +17,10 @@ body {
     font-family: sans-serif;
     color : white;
 }
+#brand_logo_img{
+    height: 40px;
+    cursor: pointer;
+}
 a{
     text-decoration: none;
 }
@@ -67,6 +71,10 @@ footer a:hover{
     outline: none;
     border: 0px solid;
     padding: 0 0 0 10px;
+}
+#search_count {
+    font-weight: 500;
+    margin-left: 1rem;
 }
 
 .movies {

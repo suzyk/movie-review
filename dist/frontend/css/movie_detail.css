@@ -7,9 +7,12 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background-color: yellow;
+    background-color: #212838;
 }
-
+#brand_logo_img{
+    height: 40px;
+    cursor: pointer;
+}
 #logoImage {
     position: fixed;
     top: 120px; /* Position 10px below top of movie_detail_main */
@@ -23,7 +26,6 @@
     top: 100px;*/
     width: 95%;
     margin: 20px auto 20px auto; 
-    background-color: green;
     border-radius: 10px;
     box-shadow:  0 0 30px black;
     z-index: 100;
@@ -35,6 +37,9 @@
     position: relative;
     padding: 40px;
     border-radius: 10px 10px 0 0; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .main_detail::before {
     content: '';
@@ -43,6 +48,7 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
+    
     background-color: black;
     border-radius: 10px 10px 0 0; 
     opacity: .6; 
@@ -102,11 +108,27 @@
     font-size: 1.3rem;
     color : var(--light-grey-color);
 }
-
-.trailers {
+.trailers_section{
+    padding: 2rem;
+    background-color: #131720;
+}
+.trailers_container{
+    clear: both;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    height: 300px;
+    position: relative;
+    padding-left: 5px;
+    padding-top: 0px;
+}
+#trailers {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    background-color: blue;
+    position: absolute;
+}
+#trailers iframe {
+    margin-right: 50px;
+    border-radius: 10px;
 }
 
 .similar_movies{

@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Site</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="/dist/resources/logo_background.png">
 </head>
 <body>
     <div class="topnav">
-        <a href="index.html" class="active">Movie Site</a>
+        <img id="brand_logo_img" src="/dist/resources/flickit-logo-trans.png"/>
         <div class="search-container">
             <form role="search" id="form">
             <input type="search" id="query" name="q" placeholder="Search...">
@@ -29,9 +30,11 @@
                     <p class="detail_overview"></p>
                 </div>
             </div>
-            <div class="trailers_container">
-                <h1 class="trailer_header">Trailers</h1>
-                <div id="trailers"></div>
+            <div class="trailers_section">
+                <h2 class="trailer_header">Trailers</h2>
+                <div class="trailers_container">
+                    <div id="trailers"></div>
+                </div>
             </div>
             <div class="similar_movies">
                 <h1 class="similar_movies_header">Similar Movies</h1>

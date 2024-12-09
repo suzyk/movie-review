@@ -3,7 +3,6 @@ const movieID = url.searchParams.get("q");
 //const path = window.location.pathname;
 //const segments = path.split('/');
 //const movieID = segments[segments.length - 1];
-console.log(`movie = ${movieID}`);
 
 const movieMain = document.querySelector('.movie_detail_main');
 const movieDetailContainer = document.querySelector('.movie_detail_container');
@@ -18,6 +17,7 @@ const rating = document.querySelector('.detail_rating');
 const tagline = document.querySelector('.detail_tagline');
 const overview = document.querySelector('.detail_overview');
 const trailers = document.getElementById('trailers');
+const brandLogoImage = document.querySelector('#brand_logo_img');
 
 //const APILINK = 'http://localhost:8000/api/images';
 const IMG_PATH = "https://image.tmdb.org/t/p/w300";
@@ -25,6 +25,7 @@ const LOGO_LINK = "https://image.tmdb.org/t/p/w300";
 const BACKDROP_LINK = "https://image.tmdb.org/t/p/w1280";
 const YOUTUBE_URL = "https://www.youtube.com/embed/";
 
+var trailerContainerWidth = 0;
 
 async function init() {
    await Promise.all([ 
@@ -36,7 +37,10 @@ async function init() {
   logoImage.onload = () => {
     const margin = 120 - 74 + logoImage.clientHeight + 40; 
     movieDetailContainer.style.marginTop = `${margin}px`;
-};
+  };
+  brandLogoImage.addEventListener('click', (e) => {
+    location.href = 'index.html';
+  });
 }
 
 function getLogo(url){
@@ -60,7 +64,6 @@ function getTrailers(url){
     fetch(`${url}/${movieID}`)
       .then(response => response.json())
       .then(response => {
-        //console.log(response.results)
         const videos = response.results;
         videos.forEach(video => {
           if (video.type == "Trailer"){
@@ -69,8 +72,24 @@ function getTrailers(url){
               "value": "<iframe title='YouTube video player' type=\"text/html\" width='640' height='390' src='http://www.youtube.com/embed/W-Q7RMpINVo' frameborder='0' allowFullScreen></iframe>"
             }}
             document.write(obj.video.value);*/
-            trailers.innerHTML += `<iframe title='YouTube video player'   type=\'text/html\' width='400' height='225' src='${YOUTUBE_URL}${video.key}' frameborder='0' allowFullScreen></iframe>`;
+            //&origin=http://127.0.0.1:5500
+            /*
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/VUCNBAmse04?si=m38yJR-J4tZGcHm0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            */
+            trailers.innerHTML += `<iframe 
+                                        title='YouTube video player'  
+                                        type=\'text/html\' 
+                                        width='400' 
+                                        height='225'
+                                        padding='25px' 
+                                        src='${YOUTUBE_URL}${video.key}' 
+                                        frameborder='0' 
+                                        allowFullScreen
+                                      ></iframe>`;
+            trailerContainerWidth += 450;
           }
+          console.log("trailer width now: "+ trailerContainerWidth);
+          trailers.style.width = `${trailerContainerWidth}px`;
         });
       })
       .catch(err => console.error(`error: ${err}`));
@@ -108,4 +127,3 @@ searchForm.addEventListener('submit', (e) =>{
 });
 // Load data on page load
 document.addEventListener("DOMContentLoaded", init);
-

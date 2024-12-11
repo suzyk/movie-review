@@ -142,6 +142,20 @@ footer a:hover{
     -o-transition: transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out;
 }
+
+.placeholder_img{
+    filter: brightness(30%);
+}
+
+.placeholder_title{
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    color: rgb(228, 228, 228);
+}
+
 .title { 
     text-align: center;
     font-size: 1.2rem;
@@ -155,7 +169,7 @@ footer a:hover{
     color: rgb(1, 184, 184);
 }
 .reviewBtn a:hover {
-    color: yellow;
+    color: var(--tag-color);
 }
 
 .title_review{

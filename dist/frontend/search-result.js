@@ -79,7 +79,12 @@ function renderMovies(movies){
     const movieCard = document.createElement('div');
     movieCard.setAttribute('class', 'movie');
     const poster = document.createElement('img');
+    
     poster.src = IMG_PATH + movie.poster_path;
+    if(movie.poster_path == null){
+      poster.src = '../resources/placeholder2.png';
+      poster.setAttribute('class', 'placeholder_img');
+    }
     const title = document.createElement('h2');
     title.setAttribute('class', 'title');
     title.innerHTML = `${movie.title}`; // query parameters
@@ -98,6 +103,12 @@ function renderMovies(movies){
     
     }
     movieCard.appendChild(poster);
+    if(movie.poster_path == null){
+      const p_title = document.createElement('h2');
+      p_title.setAttribute('class', 'placeholder_title');
+      p_title.innerHTML = `${movie.title}`;
+      movieCard.appendChild(p_title);
+    }
     movieCard.appendChild(titleReview);
     movieCard.appendChild(tags);
     movieContainer.appendChild(movieCard);

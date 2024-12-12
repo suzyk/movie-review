@@ -4,7 +4,7 @@ const movieTitle = url.searchParams.get("title");
 const APILINK = 'http://localhost:8000/api/v1/reviews';
 
 const reviewContainer = document.querySelector('.reviews');
-const title = document.querySelector('#title');
+const title = document.querySelector('#review_movie_title');
 const brandLogoImage = document.querySelector('#brand_logo_img');
 
 title.innerText = movieTitle;
@@ -18,7 +18,7 @@ const reviewCard = document.createElement('div');
 reviewCard.setAttribute('class', 'review');
 //reviewCard.setAttribute('id', `${review._id}`);
 reviewCard.innerHTML = `
-       New Review
+        <h3 class='new_review_title'>New Review</h3>
       <p><strong>Review: </strong>
             <input type="text" id="new_review" value="">
       </p>

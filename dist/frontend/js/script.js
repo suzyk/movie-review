@@ -1,3 +1,5 @@
+//import TopBar from '../components/topbar.html';
+
 const IMG_PATH = "https://image.tmdb.org/t/p/w500"; //1280 
 
 const movieContainer = document.querySelector('.movies');
@@ -101,5 +103,6 @@ function renderMovies(movies){
 }
 
 // Load data on page load
+//document.body.insertAdjacentHTML('afterbegin', TopBar);
 document.addEventListener("DOMContentLoaded", init);
 

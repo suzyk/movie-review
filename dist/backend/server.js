@@ -45,6 +45,7 @@ app.use(express.json());
 
 app.get('/api/movie_detail/:id', async(req, res) => {
   //const movieId = req.query.movieId;
+  console.log('*** inside request');
   const movieId = req.params['id'];
   if (!movieId) {
     return res.status(400).send('Movie ID is required');

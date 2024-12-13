@@ -9,7 +9,7 @@ const brandLogoImage = document.querySelector('#brand_logo_img');
 
 title.innerText = movieTitle;
 brandLogoImage.addEventListener('click', (e) => {
-    location.href = 'index.html';
+    location.href = '/dist/frontend/index.html';
 });
 
 

@@ -4,25 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlickIt</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="/dist/resources/logo_background.png">
 </head>
 <body>
     <div class="topnav">
         <img id="brand_logo_img" src="/dist/resources/flickit-logo-trans.png"/>
-        <div class="search-container">
-            <form role="search" id="form">
-            <input type="search" id="query" name="q" placeholder="Search...">
-            </form>
-        </div>
     </div>
-
+    <div class="review_title">
+        <h2 class="soft_color">Reviews for </h2>
+        <h1 id="review_movie_title">Movie Title</h1>
+    </div>  
     <section>
-        <div class="search_header">
-            <h2 class="soft_color">Search result for </h2><h1 id="search_keyword"></h1><h4 class="soft_color" id="search_count"></h4>
-        </div>
-        <div class="movies">
-        
+        <div class="reviews">
+
         </div>
     </section>
     <footer>
@@ -32,5 +27,5 @@
     </footer>
 </body>
 <script src="https://kit.fontawesome.com/5099af3658.js" crossorigin="anonymous"></script>
-<script src="js/search-result.js"></script>
+<script src="../js/reviews.js"></script>
 </html>

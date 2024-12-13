@@ -39,7 +39,7 @@ async function init() {
     movieDetailContainer.style.marginTop = `${margin}px`;
   };
   brandLogoImage.addEventListener('click', (e) => {
-    location.href = 'index.html';
+    location.href = '/dist/frontend/index.html';
   });
 }
 
@@ -122,7 +122,7 @@ searchForm.addEventListener('submit', (e) =>{
   
   const searchTerm = searchInput.value.trim();
   if (searchTerm) {
-    window.location.href = `search-result.html?q=${encodeURIComponent(searchTerm)}`;
+    window.location.href = `/dist/frontend/src/components/search-result.html?q=${encodeURIComponent(searchTerm)}`;
   }
 });
 // Load data on page load

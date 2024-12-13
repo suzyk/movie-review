@@ -61,7 +61,7 @@ searchForm.addEventListener('submit', (e) =>{
   
   const searchTerm = searchInput.value.trim();
   if (searchTerm) {
-    window.location.href = `search-result.html?q=${encodeURIComponent(searchTerm)}`;
+    window.location.href = `/dist/frontend/src/components/search-result.html?q=${encodeURIComponent(searchTerm)}`;
   }
 });
 
@@ -78,7 +78,7 @@ function renderMovies(movies){
     title.innerHTML = `${movie.title}`; // query parameters
     const review = document.createElement('h2');
     review.setAttribute('class', 'reviewBtn');
-    review.innerHTML = `<a href="reviews.html?id=${movie.id}&title=${movie.title}">reviews</a>`; // query parameters
+    review.innerHTML = `<a href="/dist/frontend/src/components/reviews.html?id=${movie.id}&title=${movie.title}">reviews</a>`; // query parameters
     const titleReview = document.createElement('div');
     titleReview.setAttribute('class', 'title_review');
     titleReview.appendChild(title);
@@ -97,7 +97,7 @@ function renderMovies(movies){
 
     movieCard.addEventListener('click', (e) =>{
       //e.preventDefault();
-      window.location.href = `movie-detail.html?q=${movie.id}`;
+      window.location.href = `/dist/frontend/src/components/movie-detail.html?q=${movie.id}`;
     });
   });
 }

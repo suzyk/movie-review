@@ -1,3 +1,6 @@
+import '../styles/main.css';
+//import '/src/js/movie-detail.js';
+
 const url = new URL(location.href);
 const movieID = url.searchParams.get("q");
 //const path = window.location.pathname;
@@ -39,7 +42,7 @@ async function init() {
     movieDetailContainer.style.marginTop = `${margin}px`;
   };
   brandLogoImage.addEventListener('click', (e) => {
-    location.href = '/dist/frontend/index.html';
+    location.href = '/index.html';
   });
 }
 
@@ -88,7 +91,6 @@ function getTrailers(url){
                                       ></iframe>`;
             trailerContainerWidth += 450;
           }
-          console.log("trailer width now: "+ trailerContainerWidth);
           trailers.style.width = `${trailerContainerWidth}px`;
         });
       })
@@ -97,7 +99,6 @@ function getTrailers(url){
 
 function renderDetailPage(movie){
     //console.log(movie);
-    console.log(`${BACKDROP_LINK}${movie.backdrop_path}`);
     mainDetailContainer.style.backgroundImage = `url(${BACKDROP_LINK}${movie.backdrop_path})`;
     poster.src = `${IMG_PATH}${movie.poster_path}`;
     const fullDate = (movie.release_date).split('-');
@@ -122,7 +123,7 @@ searchForm.addEventListener('submit', (e) =>{
   
   const searchTerm = searchInput.value.trim();
   if (searchTerm) {
-    window.location.href = `/dist/frontend/src/components/search-result.html?q=${encodeURIComponent(searchTerm)}`;
+    window.location.href = `/search-result.html?q=${encodeURIComponent(searchTerm)}`;
   }
 });
 // Load data on page load

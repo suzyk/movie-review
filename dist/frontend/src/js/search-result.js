@@ -1,3 +1,5 @@
+import '../styles/main.css';
+
 const url = new URL(location.href);
 const searchKeyword = url.searchParams.get("q");
 // Get the path after "search-result/"
@@ -19,7 +21,7 @@ let genres = {};
 
 async function init() {
     brandLogoImage.addEventListener('click', (e) => {
-        location.href = '/dist/frontend/index.html';
+        location.href = '/index.html';
       });
     await fetchGenres('http://localhost:8000/api/genres');
     await fetchMovies(`http://localhost:8000/api/search?term=${searchKeyword}`);
@@ -68,7 +70,7 @@ searchForm.addEventListener('submit', (e) =>{
     
     const searchTerm = searchInput.value.trim();
     if (searchTerm) {
-      window.location.href = `/dist/frontend/src/components/search-result.html?q=${encodeURIComponent(searchTerm)}`;
+      window.location.href = `/search-result.html?q=${encodeURIComponent(searchTerm)}`;
     }
   });
 
@@ -82,7 +84,7 @@ function renderMovies(movies){
     
     poster.src = IMG_PATH + movie.poster_path;
     if(movie.poster_path == null){
-      poster.src = '../resources/placeholder2.png';
+      poster.src = 'src/assets/placeholder2.png';
       poster.setAttribute('class', 'placeholder_img');
     }
     const title = document.createElement('h2');
@@ -90,7 +92,7 @@ function renderMovies(movies){
     title.innerHTML = `${movie.title}`; // query parameters
     const review = document.createElement('h2');
     review.setAttribute('class', 'reviewBtn');
-    review.innerHTML = `<a href="/dist/frontend/src/components/reviews.html?id=${movie.id}&title=${movie.title}">reviews</a>`; // query parameters
+    review.innerHTML = `<a href="/reviews.html?id=${movie.id}&title=${movie.title}">reviews</a>`; // query parameters
     const titleReview = document.createElement('div');
     titleReview.setAttribute('class', 'title_review');
     titleReview.appendChild(title);
@@ -115,7 +117,7 @@ function renderMovies(movies){
 
     movieCard.addEventListener('click', (e) =>{
       //e.preventDefault();
-      window.location.href = `/dist/frontend/src/components/movie-detail.html?q=${movie.id}`;
+      window.location.href = `/movie-detail.html?q=${movie.id}`;
     });
   });
   searchCount.innerHTML = `(${movies.length})`;

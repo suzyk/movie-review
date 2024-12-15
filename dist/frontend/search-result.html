@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlickIt</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="/dist/resources/logo_background.png">
+    <!--<link rel="stylesheet" href="src/styles/style.css">-->
+    <link rel="icon" href="src/assets/logo_background.png">
 </head>
 <body>
     <div class="topnav">
-        <img id="brand_logo_img" src="/dist/resources/flickit-logo-trans.png"/>
+        <img id="brand_logo_img" src="src/assets/flickit-logo-trans.png"/>
         <div class="search-container">
             <form role="search" id="form">
             <input type="search" id="query" name="q" placeholder="Search...">
@@ -32,5 +32,6 @@
     </footer>
 </body>
 <script src="https://kit.fontawesome.com/5099af3658.js" crossorigin="anonymous"></script>
-<script src="../js/search-result.js"></script>
+<!--<script src="src/js/search-result.js"></script>-->
+<script type="module" src="./src/js/search-result.js"></script>
 </html>

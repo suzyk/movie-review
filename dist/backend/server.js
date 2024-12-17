@@ -6,6 +6,9 @@ import cors from "cors";
 import 'dotenv/config';
 import axios from 'axios';
 import reviews from "./api/reviews.route.js";
+import path from "path"; //which allows you to use path.join()
+import { fileURLToPath } from 'url';
+//const path = require('path');
 
 /*
 const port = process.env.PORT || 2000;
@@ -38,12 +41,15 @@ app.use(function(req, res, next) {  // http://127.0.0.1:5500  http://localhost:5
   next();
 });
 app.use(express.json());
+// Serve the files from Vite's build output
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-
-// Serve static files from the "dist" directory
-//app.use(express.static('dist'));
-
-app.get('/api/movie_detail/:id', async(req, res) => {
+// The order of these routes is important. 
+//Put the /api/movie/:id route before the /movie/:id route 
+//so that the API request is matched first.
+app.get('/api/movie/:id', async(req, res) => {
   //const movieId = req.query.movieId;
   const movieId = req.params['id'];
   if (!movieId) {
@@ -143,20 +149,14 @@ app.get('/api/movies', async (req, res) => {
       res.status(500).send('Error fetching movies');
   }
 });
-/*
-// Rewrite route for search results with path parameter
-app.get('/search-result/:term', (req, res) => {
-  // `term` can be accessed via req.params.term for further processing if needed
-  res.sendFile(__dirname + '/dist/frontend/search-result.html');
-});
-*/
 
-app.get('/api/search', async (req, res) => {
+app.get('/api/search/:term', async (req, res) => {
+  const searchTerm = req.params['term'];
   try {
     const response = await axios.get('https://api.themoviedb.org/3/search/movie', {
       params: {
         api_key: movie_api_key,
-        query: req.query.term
+        query: searchTerm //req.query.term
       }
     });
     res.json(response.data);
@@ -164,6 +164,18 @@ app.get('/api/search', async (req, res) => {
     console.error(error);
       res.status(500).send('Error fetching movies');
   }
+});
+
+
+//Catch-all rewrite rule. Do this after all API calls
+app.get('/movie/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/movie.html'));//../frontend/dist/movie.html
+});
+app.get('/search/:term', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/search.html'));
+});
+app.get('/reviews/:id?', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/reviews.html'));
 });
 
 app.use("/api/v1/reviews", reviews);

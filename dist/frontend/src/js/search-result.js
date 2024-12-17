@@ -1,12 +1,10 @@
 import '../styles/main.css';
 
 const url = new URL(location.href);
-const searchKeyword = url.searchParams.get("q");
+//const searchKeyword = url.searchParams.get("q");
 // Get the path after "search-result/"
-//const path = window.location.pathname;
-//const segments = path.split('/');
-// The search term should be the last segment
-//const searchTerm = decodeURIComponent(segments[segments.length - 1]);
+const path = window.location.pathname;
+const searchKeyword = path.split('/').pop();
 
 const keyword_header = document.querySelector('#search_keyword');
 const IMG_PATH = "https://image.tmdb.org/t/p/w500"; //1280 
@@ -21,10 +19,10 @@ let genres = {};
 
 async function init() {
     brandLogoImage.addEventListener('click', (e) => {
-        location.href = '/index.html';
+        location.href = '/';
       });
-    await fetchGenres('http://localhost:8000/api/genres');
-    await fetchMovies(`http://localhost:8000/api/search?term=${searchKeyword}`);
+    await fetchGenres('/api/genres');
+    await fetchMovies(`/api/search/${searchKeyword}`);
 }
 
 // Fetch genres and cache them in localStorage
@@ -70,7 +68,7 @@ searchForm.addEventListener('submit', (e) =>{
     
     const searchTerm = searchInput.value.trim();
     if (searchTerm) {
-      window.location.href = `/search-result.html?q=${encodeURIComponent(searchTerm)}`;
+      window.location.href = `/search-result/${encodeURIComponent(searchTerm)}`;
     }
   });
 
@@ -92,7 +90,7 @@ function renderMovies(movies){
     title.innerHTML = `${movie.title}`; // query parameters
     const review = document.createElement('h2');
     review.setAttribute('class', 'reviewBtn');
-    review.innerHTML = `<a href="/reviews.html?id=${movie.id}&title=${movie.title}">reviews</a>`; // query parameters
+    review.innerHTML = `<a href="/reviews/${movie.id}?title=${encodeURIComponent(movie.title)}">reviews</a>`; // query parameters
     const titleReview = document.createElement('div');
     titleReview.setAttribute('class', 'title_review');
     titleReview.appendChild(title);
@@ -117,7 +115,7 @@ function renderMovies(movies){
 
     movieCard.addEventListener('click', (e) =>{
       //e.preventDefault();
-      window.location.href = `/movie-detail.html?q=${movie.id}`;
+      window.location.href = `/movie/${movie.id}`;
     });
   });
   searchCount.innerHTML = `(${movies.length})`;

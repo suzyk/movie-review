@@ -1,9 +1,10 @@
 import '../styles/main.css';
 
 const url = new URL(location.href);
-const movieId = url.searchParams.get("id");
+//const movieId = url.searchParams.get("id");
+const movieId = url.pathname.split('/').pop();  // Extract movie ID
 const movieTitle = url.searchParams.get("title");
-const APILINK = 'http://localhost:8000/api/v1/reviews';
+const APILINK = '/api/v1/reviews';
 
 const reviewContainer = document.querySelector('.reviews');
 const title = document.querySelector('#review_movie_title');
@@ -14,7 +15,7 @@ const delete_btn = document.querySelector('.delete-review-btn');
 */
 title.innerText = movieTitle;
 brandLogoImage.addEventListener('click', (e) => {
-    location.href = '/index.html';
+    location.href = '/';
 });
 
 //save_btn.addEventListener('click', saveReview('new_review', 'new_user'));

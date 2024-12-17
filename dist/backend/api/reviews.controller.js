@@ -18,6 +18,7 @@ export default class ReviewsController {
     static async apiGetReview(req, res, next) { // we don't need to crate instance for static function
         try {
             let id = req.params.id || {};
+            console.log(req);
             let review = await ReviewsDAO.getReview(id);
             if (!review){
                 res.status(404).json({error: "Not found"});

@@ -2,10 +2,9 @@ import '../styles/main.css';
 //import '/src/js/movie-detail.js';
 
 const url = new URL(location.href);
-const movieID = url.searchParams.get("q");
-//const path = window.location.pathname;
-//const segments = path.split('/');
-//const movieID = segments[segments.length - 1];
+//const movieID = url.searchParams.get("q");
+const path = window.location.pathname;
+const movieID = path.split('/').pop();
 
 const movieMain = document.querySelector('.movie_detail_main');
 const movieDetailContainer = document.querySelector('.movie_detail_container');
@@ -32,9 +31,11 @@ var trailerContainerWidth = 0;
 
 async function init() {
    await Promise.all([ 
-    getLogo('http://localhost:8000/api/images'),
-    getDetail('http://localhost:8000/api/movie_detail'),
-    getTrailers('http://localhost:8000/api/trailers')
+    //   /api/movie → relative to the site root (good)
+    //    api/movie → relative to the current page's path (bad)
+    getLogo('/api/images'),
+    getDetail('/api/movie'),
+    getTrailers('/api/trailers')
   ]);
   // Calculate and set the margin after all data is loaded
   logoImage.onload = () => {
@@ -42,7 +43,7 @@ async function init() {
     movieDetailContainer.style.marginTop = `${margin}px`;
   };
   brandLogoImage.addEventListener('click', (e) => {
-    location.href = '/index.html';
+    location.href = '/';
   });
 }
 
@@ -123,7 +124,7 @@ searchForm.addEventListener('submit', (e) =>{
   
   const searchTerm = searchInput.value.trim();
   if (searchTerm) {
-    window.location.href = `/search-result.html?q=${encodeURIComponent(searchTerm)}`;
+    window.location.href = `/search/${encodeURIComponent(searchTerm)}`;
   }
 });
 // Load data on page load

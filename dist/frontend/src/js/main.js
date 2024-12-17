@@ -15,8 +15,8 @@ async function init() {
   brandLogoImage.addEventListener('click', (e) => {
     location.reload();
   });
-  await fetchGenres('http://localhost:8000/api/genres');
-  await fetchMovies('http://localhost:8000/api/movies');
+  await fetchGenres('/api/genres');
+  await fetchMovies('/api/movies');
 }
 
 // Fetch genres and cache them in localStorage
@@ -62,7 +62,7 @@ searchForm.addEventListener('submit', (e) =>{
   
   const searchTerm = searchInput.value.trim();
   if (searchTerm) {
-    window.location.href = `/search-result.html?q=${encodeURIComponent(searchTerm)}`;
+    window.location.href = `/search/${encodeURIComponent(searchTerm)}`;
   }
 });
 
@@ -79,7 +79,8 @@ function renderMovies(movies){
     title.innerHTML = `${movie.title}`; // query parameters
     const review = document.createElement('h2');
     review.setAttribute('class', 'reviewBtn');
-    review.innerHTML = `<a href="/reviews.html?id=${movie.id}&title=${movie.title}">reviews</a>`; // query parameters
+    review.innerHTML = `<a href="/reviews/${movie.id}?title=${encodeURIComponent(movie.title)}">reviews</a>`; // query parameters
+    // href="/reviews.html?
     const titleReview = document.createElement('div');
     titleReview.setAttribute('class', 'title_review');
     titleReview.appendChild(title);
@@ -97,8 +98,8 @@ function renderMovies(movies){
     movieContainer.appendChild(movieCard);
 
     movieCard.addEventListener('click', (e) =>{
-      //e.preventDefault();
-      window.location.href = `movie-detail.html?q=${movie.id}`;
+      // Vite's dev server expects a simple file-based URL like /movie.html
+      window.location.href = `/movie/${movie.id}`; // this requires route handling
     });
   });
 }

@@ -1,0 +1,15 @@
+{
+    "include": ["src/**/*.ts", "src/index.js", "src/dao/reviewsDAO.js", "src/api/reviews.controller.js", "src/api/reviews.route.js"],
+    "exclude": ["node_modules", "dist"],
+    "compilerOptions": {
+        "target": "ES6",
+        "lib": ["ES6"],
+        "rootDir": "./src",            // Input TypeScript source files
+        "outDir": "./dist", 
+        "strict": true,
+        "allowJs": true,
+        "esModuleInterop": true, // this is for using nodejs module. Allows compatibility with CommonJS-style imports.
+        "module": "CommonJS" ,
+        "moduleResolution": "node"
+    }
+}

@@ -5,9 +5,11 @@ import express from "express";
 import cors from "cors";
 import 'dotenv/config';
 import axios from 'axios';
-import reviews from "./api/reviews.route.js";
+import reviews from "./api/reviews.route";
+
+//import movie from "./api/movies.route.ts";
 import path from "path"; //which allows you to use path.join()
-import { fileURLToPath } from 'url';
+//import { fileURLToPath } from 'url';
 //const path = require('path');
 
 /*
@@ -32,7 +34,7 @@ app.use(function(req, res, next) {  // http://127.0.0.1:5500  http://localhost:5
     'http://localhost:5500',
     'http://127.0.0.1:5500'
   ];
-  if (corsWhitelist.indexOf(req.headers.origin) !== -1) {
+  if (req.headers.origin != undefined && corsWhitelist.indexOf(req.headers.origin) !== -1) {
     res.header('Access-Control-Allow-Origin', req.headers.origin);
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   }
@@ -42,13 +44,19 @@ app.use(function(req, res, next) {  // http://127.0.0.1:5500  http://localhost:5
 });
 app.use(express.json());
 // Serve the files from Vite's build output
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+//const __filename = fileURLToPath(import.meta.url);
+//const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, '../../frontend/dist')));
+console.log('Static file path:', path.join(__dirname, '../../frontend/dist'));
+/*
+app.get('/', (req, res) => {
+  res.send('API is working!');
+});*/
 
 // The order of these routes is important. 
 //Put the /api/movie/:id route before the /movie/:id route 
 //so that the API request is matched first.
+
 app.get('/api/movie/:id', async(req, res) => {
   //const movieId = req.query.movieId;
   const movieId = req.params['id'];
@@ -169,15 +177,16 @@ app.get('/api/search/:term', async (req, res) => {
 
 //Catch-all rewrite rule. Do this after all API calls
 app.get('/movie/:id', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/movie.html'));//../frontend/dist/movie.html
+  res.sendFile(path.join(__dirname, '../../frontend/dist/movie.html'));//../frontend/dist/movie.html
 });
 app.get('/search/:term', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/search.html'));
+  res.sendFile(path.join(__dirname, '../../frontend/dist/search.html'));
 });
 app.get('/reviews/:id?', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/reviews.html'));
+  res.sendFile(path.join(__dirname, '../../frontend/dist/reviews.html'));
 });
 
+//app.use("/api", movie);
 app.use("/api/v1/reviews", reviews);
 app.use("*", (req, res) => res.status(404).json({error: "not found"})); // * means anything else
 

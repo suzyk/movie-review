@@ -1,4 +1,5 @@
 import '../styles/main.css';
+import placeholderImg from '/src/assets/placeholder2.png';
 //import '/src/js/movie-detail.js';
 
 const url = new URL(location.href);
@@ -101,7 +102,11 @@ function getTrailers(url){
 function renderDetailPage(movie){
     //console.log(movie);
     mainDetailContainer.style.backgroundImage = `url(${BACKDROP_LINK}${movie.backdrop_path})`;
+    
     poster.src = `${IMG_PATH}${movie.poster_path}`;
+    if (movie.poster_path == null){
+      poster.src = placeholderImg;
+    }
     const fullDate = (movie.release_date).split('-');
     title.innerHTML = `${movie.original_title} <span class="detail_releaseDate">(${fullDate[0]})</span>`; //movie.original_title; 
   

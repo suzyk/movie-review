@@ -1,4 +1,5 @@
 import '../styles/main.css';
+import placeholderImg from '/src/assets/placeholder2.png';
 
 const url = new URL(location.href);
 //const searchKeyword = url.searchParams.get("q");
@@ -82,7 +83,7 @@ function renderMovies(movies){
     
     poster.src = IMG_PATH + movie.poster_path;
     if(movie.poster_path == null){
-      poster.src = 'src/assets/placeholder2.png';
+      poster.src = placeholderImg;//'/src/assets/placeholder2.png';
       poster.setAttribute('class', 'placeholder_img');
     }
     const title = document.createElement('h2');

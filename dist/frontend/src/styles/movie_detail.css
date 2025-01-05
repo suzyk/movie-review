@@ -57,6 +57,7 @@
 #detail_poster {
     z-index: 1;
     border-radius: 10px;
+    width: 300px;
 }
 
 .detail_info {

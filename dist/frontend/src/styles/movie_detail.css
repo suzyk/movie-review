@@ -14,6 +14,7 @@
     cursor: pointer;
 }
 #logoImage {
+    visibility: hidden;
     position: fixed;
     top: 120px; /* Position 10px below top of movie_detail_main */
     left: 50%;
@@ -58,6 +59,7 @@
     z-index: 1;
     border-radius: 10px;
     width: 300px;
+    visibility: hidden;
 }
 
 .detail_info {
@@ -110,7 +112,7 @@
     color : var(--light-grey-color);
 }
 .trailers_section{
-    padding: 2rem;
+    padding: 4rem 2rem 2rem 2rem;
     background-color: #131720;
 }
 .trailers_container{
@@ -123,13 +125,19 @@
     padding-top: 0px;
 }
 #trailers {
-    margin-top: 2rem;
     margin-bottom: 1rem;
     position: absolute;
 }
 #trailers iframe {
     margin-right: 50px;
     border-radius: 10px;
+}
+
+#no_trailers {
+    visibility: visible;
+    color: var(--not-available-color);
+    font-size: 1rem;
+    margin-top: 1rem;
 }
 
 .similar_movies{

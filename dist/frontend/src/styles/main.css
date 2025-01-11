@@ -2,6 +2,7 @@
 :root {
     --tag-color: rgb(225, 177, 0);
     --dark-text-color: rgb(51, 51, 51);
+    --not-available-color: rgb(100, 100, 100);
     --light-grey-color: rgb(189, 189, 189);
 }
 

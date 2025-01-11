@@ -20,6 +20,7 @@ const rating = document.querySelector('.detail_rating');
 const tagline = document.querySelector('.detail_tagline');
 const overview = document.querySelector('.detail_overview');
 const trailers = document.getElementById('trailers');
+const noTrailers = document.getElementById('no_trailers');
 const brandLogoImage = document.querySelector('#brand_logo_img');
 
 //const APILINK = 'http://localhost:8000/api/images';
@@ -53,10 +54,15 @@ function getLogo(url){
     .then(response => response.json())
     .then(response => {
         const logos = response.logos;
-        const logoPath = `${LOGO_LINK}${logos[0].file_path}`;
-        logoImage.src = logoPath;
+        if(Array.isArray(logos) && logos.length > 0){
+          const logoPath = `${LOGO_LINK}${logos[0].file_path}`;
+          logoImage.src = logoPath;
+          logoImage.style.visibility = 'visible';
+        }
     })
-    .catch(err => console.error(`error: ${err}`));
+    .catch(err => {
+      console.error(`error: ${err}`);
+    });
 }
 function getDetail(url){
     fetch(`${url}/${movieID}`)
@@ -94,6 +100,7 @@ function getTrailers(url){
             trailerContainerWidth += 450;
           }
           trailers.style.width = `${trailerContainerWidth}px`;
+          noTrailers.style.visibility = 'hidden';
         });
       })
       .catch(err => console.error(`error: ${err}`));
@@ -104,11 +111,21 @@ function renderDetailPage(movie){
     mainDetailContainer.style.backgroundImage = `url(${BACKDROP_LINK}${movie.backdrop_path})`;
     
     poster.src = `${IMG_PATH}${movie.poster_path}`;
+    poster.onload = () =>{
+      poster.style.visibility = 'visible';
+    };
     if (movie.poster_path == null){
       poster.src = placeholderImg;
+      poster.setAttribute('class', 'placeholder_img');
+      poster.style.visibility = 'visible';
     }
+    
     const fullDate = (movie.release_date).split('-');
-    title.innerHTML = `${movie.original_title} <span class="detail_releaseDate">(${fullDate[0]})</span>`; //movie.original_title; 
+    let releaseDate = fullDate[0];
+    if (fullDate[0] != ''){
+      releaseDate = `(${fullDate[0]})`;
+    }
+    title.innerHTML = `${movie.original_title} <span class="detail_releaseDate">${releaseDate}</span>`; //movie.original_title; 
   
     for (const i in movie.genres){
         const genre = movie.genres[i]; 
